@@ -13,10 +13,6 @@ RUN apt-get update && apt-get install -y \
 # Instale o Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Instale o Node.js 20.12.0
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
-
 # Defina o diretório de trabalho
 WORKDIR /var/www/html
 
@@ -34,6 +30,3 @@ EXPOSE 9091
 
 # Comando para iniciar o servidor Laravel na porta 9091
 CMD php artisan serve --host=0.0.0.0 --port=9091
-
-# Construir e versionar os assets para produção
-RUN npm run build
