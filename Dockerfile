@@ -22,9 +22,6 @@ COPY . .
 # Instale as dependências do Laravel
 RUN composer install
 
-# Instale as dependências do Node.js
-RUN npm install
-
 # Exponha a porta 9091 para o servidor web
 EXPOSE 9091
 
