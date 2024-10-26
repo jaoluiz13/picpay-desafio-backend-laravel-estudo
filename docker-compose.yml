@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: simplepicpay
+        ports:
+            - "9091:9091"
+        volumes:
+            - .:/var/www/html
+        env_file:
+            - .env
