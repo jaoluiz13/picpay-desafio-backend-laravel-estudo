@@ -21,9 +21,10 @@ COPY . .
 
 # Instale as dependências do Laravel
 RUN composer install
-
 # Exponha a porta 9091 para o servidor web
 EXPOSE 9091
 
 # Comando para iniciar o servidor Laravel na porta 9091
 CMD php artisan serve --host=0.0.0.0 --port=9091
+
+RUN php artisan migrate

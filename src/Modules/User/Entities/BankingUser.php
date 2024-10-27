@@ -11,7 +11,7 @@ class BankingUser extends AbstractUser
     private const REGULAR_USER = 'regular_user';
     private const SELLER_USER = 'seller_user';
 
-    public function __construct($full_name, $email, $doc_number, $phone_number, $password)
+    public function __construct($full_name, $email, $doc_number, $phone_number, $password, $balance)
     {
 
         $this->full_name =  $full_name;
@@ -19,13 +19,22 @@ class BankingUser extends AbstractUser
         $this->doc_number = $doc_number;
         $this->phone_number = $phone_number;
         $this->password = $password;
-        $this->balance = .0;
+        $this->balance = $balance;
 
         $this->validateBankingUser();
 
         $this->user_type = strlen($this->doc_number) == 11 ? self::REGULAR_USER : self::SELLER_USER;
 
         $this->validatePassword();
+    }
+
+    public function __set($name, $value)
+    {
+
+        if ($name === 'id') {
+            $this->id = $value;
+            return;
+        }
     }
 
     private function validateBankingUser()

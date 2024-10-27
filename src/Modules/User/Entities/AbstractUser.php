@@ -5,6 +5,7 @@ namespace Src\Modules\User\Entities;
 abstract class AbstractUser
 {
 
+    public int $id;
     public string $full_name;
     public string $email;
     public string $doc_number;

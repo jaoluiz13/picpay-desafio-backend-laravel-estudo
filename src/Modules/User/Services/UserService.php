@@ -32,21 +32,25 @@ class UserService
                 $body->email,
                 $body->doc_number,
                 $body->phone_number,
-                $body->password
+                $body->password,
+                .0
             );
 
             $userDocumentExists = $this->userRepository->findByDocument($user->doc_number);
-
-            if ($userDocumentExists) {
+            if ($userDocumentExists != null) {
+                return response()->json(['message' => 'User Document Already exists'], 400);
             }
 
-            $userEmailExists = $this->userRepository->findByEmail($user->doc_number);
-            if ($userEmailExists) {
+            $userEmailExists = $this->userRepository->findByEmail($user->email);
+            if ($userEmailExists != null) {
+                return response()->json(['message' => 'User Email Already  exists'], 400);
             }
 
-            $createdUserId = $this->userRepository->add($user);
+            $user->__set('id', $this->userRepository->add($user));
+
+            return response()->json(['user' => $user], 201);
         } catch (\Exception $e) {
-            return response()->json(['error_msg' => $e->getMessage()], 500);
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 }

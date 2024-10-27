@@ -9,25 +9,27 @@ use Src\Modules\User\Repositories\Interfaces\UserRepositoryInterface;
 class UserRepository implements UserRepositoryInterface
 {
 
-    public function add(BankingUser $user): void
+    public function add(BankingUser $user): int
     {
-        DB::table('users')->insert([
+        return DB::table('users')->insertGetId([
             'full_name' => $user->full_name,
-            'email' => $user->full_name,
-            'doc_number' => $user->full_name,
-            'phone_number' => $user->full_name,
-            'password' => password_hash($user->full_name, PASSWORD_BCRYPT),
-            'user_type' => $user->full_name,
+            'email' => $user->email,
+            'doc_number' => $user->doc_number,
+            'phone_number' => $user->phone_number,
+            'password' => password_hash($user->password, PASSWORD_BCRYPT),
+            'user_type' => $user->user_type,
             'balance' => $user->balance,
         ]);
     }
 
-    public function findByDocument(string $document): BankingUser
+    public function findByDocument(string $document): BankingUser | null
     {
-        return DB::table('users')->select(['*'])->where('document', $document)->first();
+        $user =  DB::table('users')->select(['*'])->where('doc_number', $document)->first();
+        return $user == null ? null : new BankingUser($user->full_name, $user->email, $user->doc_number, $user->phone_number, $user->password, $user->balance);
     }
-    public function findByEmail(string $email): BankingUser
+    public function findByEmail(string $email): BankingUser | null
     {
-        return DB::table('users')->select(['*'])->where('email', $email)->first();
+        $user = DB::table('users')->select(['*'])->where('email', $email)->first();
+        return $user == null ? null : new BankingUser($user->full_name, $user->email, $user->doc_number, $user->phone_number, $user->password, $user->balance);
     }
 }

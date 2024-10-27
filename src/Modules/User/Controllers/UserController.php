@@ -17,6 +17,7 @@ class UserController extends Controller
 
     public function handleCreateUserRequest(Request $request)
     {
+
         return $this->_userService->create($request);
     }
 }
