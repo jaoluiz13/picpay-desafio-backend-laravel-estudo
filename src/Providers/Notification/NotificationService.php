@@ -16,7 +16,8 @@ class NotificationService
         try {
 
             $response = RequestService::request(env('API_DEVTOOLS_URL'), '/v1/notify', 'POST', []);
-            if ($response['status'] != "error") {
+
+            if (isset($response['status']) && $response['status'] != "error") {
                 Log::info($user->full_name . " received a transfer of $ " . $transference->amount);
                 return;
             }

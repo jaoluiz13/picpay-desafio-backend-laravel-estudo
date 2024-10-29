@@ -6,10 +6,13 @@ use Src\Modules\User\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Src\Modules\Transferences\Entities\Transference;
 use Src\Modules\Transferences\Repositories\TransferencesRepository;
+use Src\Modules\Transferences\Repositories\Interfaces\TransferencesRepositoryInterface;
 use Src\Modules\User\Entities\BankingUser;
 use Src\Modules\Transferences\Helpers\IncommingRequestBodyValidator;
+use Src\Modules\User\Repositories\Interfaces\UserRepositoryInterface;
 use Src\Providers\TransferAuthorizer\TransferAuthorizerProvider;
 use Src\Providers\Notification\NotificationService;
+use Src\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterface;
 
 class TransferencesService
 {
@@ -19,9 +22,9 @@ class TransferencesService
     private $_notificationService;
 
     public function __construct(
-        UserRepository $userRepository,
-        TransferencesRepository $transferencesRepository,
-        TransferAuthorizerProvider $transferAuthorizer,
+        UserRepositoryInterface $userRepository,
+        TransferencesRepositoryInterface $transferencesRepository,
+        TransferAuthorizerProviderInterface $transferAuthorizer,
         NotificationService $notificationService
     ) {
         $this->_userRepository = $userRepository;

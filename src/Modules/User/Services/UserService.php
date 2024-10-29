@@ -6,12 +6,13 @@ use Src\Modules\User\Repositories\UserRepository;
 use Src\Modules\User\Entities\BankingUser;
 use Illuminate\Http\Request;
 use Src\Modules\User\Helpers\IncommingRequestBodyValidator;
+use Src\Modules\User\Repositories\Interfaces\UserRepositoryInterface;
 
 class UserService
 {
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }
