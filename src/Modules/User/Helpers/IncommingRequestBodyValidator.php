@@ -2,7 +2,7 @@
 
 namespace Src\Modules\User\Helpers;
 
-class BodyHelper
+class IncommingRequestBodyValidator
 {
 
     public static function validadateBodyCreateUser(object $body): object

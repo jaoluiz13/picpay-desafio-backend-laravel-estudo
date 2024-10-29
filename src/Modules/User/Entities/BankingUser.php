@@ -8,8 +8,8 @@ use Src\Modules\User\Exceptions\InvalidUserException;
 class BankingUser extends AbstractUser
 {
 
-    private const REGULAR_USER = 'regular_user';
-    private const SELLER_USER = 'seller_user';
+    public const REGULAR_USER = 'regular_user';
+    public const SELLER_USER = 'seller_user';
 
     public function __construct($full_name, $email, $doc_number, $phone_number, $password, $balance)
     {

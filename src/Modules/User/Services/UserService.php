@@ -5,7 +5,7 @@ namespace  Src\Modules\User\Services;
 use Src\Modules\User\Repositories\UserRepository;
 use Src\Modules\User\Entities\BankingUser;
 use Illuminate\Http\Request;
-use Src\Modules\User\Helpers\BodyHelper;
+use Src\Modules\User\Helpers\IncommingRequestBodyValidator;
 
 class UserService
 {
@@ -21,7 +21,7 @@ class UserService
 
         try {
 
-            $isAValidRequest = BodyHelper::validadateBodyCreateUser($body = json_decode($request->getContent()));
+            $isAValidRequest = IncommingRequestBodyValidator::validadateBodyCreateUser($body = json_decode($request->getContent()));
 
             if (!$isAValidRequest->valid) {
                 return response()->json($isAValidRequest, 400);

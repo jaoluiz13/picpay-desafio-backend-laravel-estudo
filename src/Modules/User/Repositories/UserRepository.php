@@ -32,4 +32,9 @@ class UserRepository implements UserRepositoryInterface
         $user = DB::table('users')->select(['*'])->where('email', $email)->first();
         return $user == null ? null : new BankingUser($user->full_name, $user->email, $user->doc_number, $user->phone_number, $user->password, $user->balance);
     }
+    public function findById(int $id): BankingUser | null
+    {
+        $user = DB::table('users')->select(['*'])->where('id', $id)->first();
+        return $user == null ? null : new BankingUser($user->full_name, $user->email, $user->doc_number, $user->phone_number, $user->password, $user->balance);
+    }
 }
