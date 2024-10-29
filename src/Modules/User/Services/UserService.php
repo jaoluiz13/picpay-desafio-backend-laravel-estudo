@@ -27,13 +27,14 @@ class UserService
                 return response()->json($isAValidRequest, 400);
             }
 
+            //! Inicializando usuario com saldo padrão de 1000 para conseguir realizar as transfencias
             $user = new BankingUser(
                 $body->full_name,
                 $body->email,
                 $body->doc_number,
                 $body->phone_number,
                 $body->password,
-                .0
+                1000
             );
 
             $userDocumentExists = $this->userRepository->findByDocument($user->doc_number);
