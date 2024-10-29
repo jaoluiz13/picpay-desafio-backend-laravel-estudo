@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Modules\Providers\TransferAuthorizer\Interfaces;
+namespace Src\Providers\TransferAuthorizer\Interfaces;
 
 use Src\Modules\Transferences\Entities\Transference;
 

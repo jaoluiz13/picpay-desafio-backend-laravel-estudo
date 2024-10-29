@@ -8,8 +8,8 @@ use Src\Modules\Transferences\Entities\Transference;
 use Src\Modules\Transferences\Repositories\TransferencesRepository;
 use Src\Modules\User\Entities\BankingUser;
 use Src\Modules\Transferences\Helpers\IncommingRequestBodyValidator;
-use Src\Modules\Providers\TransferAuthorizer\TransferAuthorizerProvider;
-use Src\Modules\Providers\Notification\NotificationService;
+use Src\Providers\TransferAuthorizer\TransferAuthorizerProvider;
+use Src\Providers\Notification\NotificationService;
 
 class TransferencesService
 {

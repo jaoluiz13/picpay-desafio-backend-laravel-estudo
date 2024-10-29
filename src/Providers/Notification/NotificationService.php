@@ -1,12 +1,12 @@
 <?php
 
-namespace Src\Modules\Providers\Notification;
+namespace Src\Providers\Notification;
 
 
 use Src\Modules\User\Entities\BankingUser;
 use Src\Modules\Transferences\Entities\Transference;
 use Illuminate\Support\Facades\Log;
-use Src\Modules\Providers\Request\RequestService;
+use Src\Providers\Request\RequestService;
 
 
 class NotificationService

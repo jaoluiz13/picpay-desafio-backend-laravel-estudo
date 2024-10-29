@@ -1,10 +1,10 @@
 <?php
 
-namespace Src\Modules\Providers\TransferAuthorizer;
+namespace Src\Providers\TransferAuthorizer;
 
-use Src\Modules\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterace;
+use Src\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterace;
+use Src\Providers\Request\RequestService;
 use Src\Modules\Transferences\Entities\Transference;
-use Src\Modules\Providers\Request\RequestService;
 
 class TransferAuthorizerProvider implements TransferAuthorizerProviderInterace
 {

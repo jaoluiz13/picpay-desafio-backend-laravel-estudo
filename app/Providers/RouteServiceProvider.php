@@ -25,5 +25,8 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::namespace('App\Http\Controllers')
             ->group(base_path('routes/users.php'));
+
+        Route::namespace('App\Http\Controllers')
+            ->group(base_path('routes/transferences.php'));
     }
 }

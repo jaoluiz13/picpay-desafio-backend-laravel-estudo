@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Modules\Providers\Request;
+namespace Src\Providers\Request;
 
 use Illuminate\Support\Facades\Http;
 use Exception;
