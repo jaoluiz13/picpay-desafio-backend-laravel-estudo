@@ -2,11 +2,11 @@
 
 namespace Src\Providers\TransferAuthorizer;
 
-use Src\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterace;
+use Src\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterface;
 use Src\Providers\Request\RequestService;
 use Src\Modules\Transferences\Entities\Transference;
 
-class TransferAuthorizerProvider implements TransferAuthorizerProviderInterace
+class TransferAuthorizerProvider implements TransferAuthorizerProviderInterface
 {
     public function authorizeTransfer(Transference $transference): bool
     {

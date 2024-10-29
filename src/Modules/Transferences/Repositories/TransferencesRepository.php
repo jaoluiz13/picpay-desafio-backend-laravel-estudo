@@ -23,11 +23,13 @@ class TransferencesRepository implements TransferencesRepositoryInterface
                 throw new TransferException("Insufficient balance.");
             }
 
-            $sender->balance -= $transference->amount;
-            $sender->save();
+            DB::table('users')->where('id', $transference->id_payer)->update([
+                'balance' => $sender->balance - $transference->amount
+            ]);
 
-            $receiver->balance += $transference->amount;
-            $receiver->save();
+            DB::table('users')->where('id', $transference->id_payee)->update([
+                'balance' => $receiver->balance + $transference->amount
+            ]);
 
             $transactionId = DB::table('transactions')->insertGetId([
                 'sender_id' => $transference->id_payer,

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Src\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterace;
+use Src\Providers\TransferAuthorizer\Interfaces\TransferAuthorizerProviderInterface;
 use Src\Providers\TransferAuthorizer\TransferAuthorizerProvider;
 use Src\Modules\Transferences\Repositories\Interfaces\TransferencesRepositoryInterface;
 use Src\Modules\Transferences\Repositories\TransferencesRepository;
@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(TransferencesRepositoryInterface::class, TransferencesRepository::class);
-        $this->app->bind(TransferAuthorizerProviderInterace::class, TransferAuthorizerProvider::class);
+        $this->app->bind(TransferAuthorizerProviderInterface::class, TransferAuthorizerProvider::class);
     }
 
     /**
