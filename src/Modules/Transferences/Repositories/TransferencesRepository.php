@@ -35,8 +35,7 @@ class TransferencesRepository implements TransferencesRepositoryInterface
                 'sender_id' => $transference->id_payer,
                 'receiver_id' => $transference->id_payee,
                 'amount' => $transference->amount,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => now()
             ]);
 
             DB::commit();
