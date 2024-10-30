@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-app
+spec:
+  replicas: 3 # Define o número de réplicas dos Pods
+  selector:
+    matchLabels:
+      app: laravel
+  template:
+    metadata:
+      labels:
+        app: laravel
+    spec:
+      containers:
+      - name: laravel-app
+        image: seu_usuario/seu_projeto_laravel:latest # Substitua com o caminho da imagem Docker
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_HOST
+          value: "mysql-service" # O nome do serviço de banco de dados que definiremos em seguida
+        - name: DB_DATABASE
+          value: "laravel"
+        - name: DB_USERNAME
+          value: "root"
+        - name: DB_PASSWORD
+          value: "password" # Altere conforme necessário
