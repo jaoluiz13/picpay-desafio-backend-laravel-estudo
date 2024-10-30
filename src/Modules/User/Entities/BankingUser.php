@@ -48,6 +48,10 @@ class BankingUser extends AbstractUser
             throw new InvalidUserException("Email cannot be empty.");
         }
 
+        if (empty($this->phone_number)) {
+            throw new InvalidUserException("Phone number cannot be empty.");
+        }
+
         if (empty($this->doc_number)) {
             throw new InvalidUserException("Document number cannot be empty.");
         }

@@ -44,7 +44,7 @@ class UserService
 
             $userEmailExists = $this->userRepository->findByEmail($user->email);
             if ($userEmailExists != null) {
-                return response()->json(['message' => 'User Email Already  exists'], 400);
+                return response()->json(['message' => 'User Email Already exists'], 400);
             }
 
             $user->__set('id', $this->userRepository->add($user));

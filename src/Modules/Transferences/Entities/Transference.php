@@ -4,6 +4,7 @@ namespace Src\Modules\Transferences\Entities;
 
 use Src\Modules\Transferences\Exceptions\InvalidTransferValueException;
 use Src\Modules\Transferences\Exceptions\InvalidUserIdException;
+use Src\Modules\Transferences\Exceptions\SelfTransferenceException;
 
 class Transference
 {
@@ -32,6 +33,10 @@ class Transference
 
         if ($this->id_payee <= 0 || $this->id_payer <= 0) {
             throw new InvalidUserIdException('Invalid user id.');
+        }
+
+        if ($this->id_payer == $this->id_payee) {
+            throw new SelfTransferenceException('You cannot make a transference to yourself.');
         }
     }
 
